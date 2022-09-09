@@ -1,16 +1,12 @@
 import Note from './Note';
-
-const NotestList = () => {
+import AddNote from './AddNote';
+const NotestList = ({notes,handleAddNote}) => {
     return (
         <div className = "notes-list"> 
-           
-        <Note />
-        <Note />
-        <Note />
-        <Note />
-        <Note />
-        
-        
+            {notes.map((note) => (
+                <Note id={note.id} text = {note.text} date = {note.date}/>
+            ))}     
+            <AddNote handleAddNote = {handleAddNote}/>
         </div>
     )
 }
