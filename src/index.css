@@ -62,6 +62,7 @@ textarea:focus{
   display: flex;     /*component creates flex style - sets primary elements with orgins*/
   flex-direction: column;
   justify-content: space-between;
+  white-space: pre-wrap;
 }
 
 .note-footer{
