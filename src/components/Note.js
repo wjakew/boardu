@@ -1,5 +1,8 @@
+// Jakub Wawak
+// kubawawak@gmail.com
 import { MdDeleteForever } from 'react-icons/md';
 
+//react component for rendering note objects
 const Note = ({id,text,date,handleDeleteNote}) => {
     return(
 

@@ -1,9 +1,12 @@
+// Jakub Wawak
+// kubawawak@gmail.com
+
 import { useState } from "react";
 
-const AddNote = ( {handleAddNote}) => {
+// react component to render adding note object
+const AddNote = ( {handleAddNote, handleDeleteNote}) => {
     const [noteText,setNoteText] = useState('');
     const characterLimit = 200;
-
 
     const handleChange = (event) => {
         if ( characterLimit - event.target.value.length >= 0){

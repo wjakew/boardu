@@ -1,34 +1,16 @@
+// Jakub Wawak
+// kubawawak@gmail.com
 import NotestList from "./components/NotesList";
 import { useState } from "react";
 import {nanoid} from 'nanoid';
+import Search from './components/Search';
+import Header from './components/Header';
 
+// main application function
 const App = () =>{
-  const [notes,setNotes] = useState([
-    {
-    id: nanoid(),
-    text: 'This is my frist note',
-    date: "15/04/2021"
-    },
+  const [notes,setNotes] = useState([]);
 
-    {
-      id: nanoid(),
-      text: 'This is my second note',
-      date: "15/04/2021"
-    },
-
-    {
-      id: nanoid(),
-      text: 'This is my third note',
-      date: "15/04/2021"
-    },
-
-    {
-      id: nanoid(),
-      text: 'This is my fourth note',
-      date: "15/04/2021"
-    }
-  
-  ]);
+  const [searchText, setSearchText] = useState('');
 
   const addNote = (text) => {
     const date = new Date();
@@ -42,12 +24,14 @@ const App = () =>{
   };
 
   const deleteNote = (id) =>{
-    const newNotes = notes.filter((note)=> note.id != id);
+    const newNotes = notes.filter((note)=> note.id !== id);
     setNotes(newNotes);
   }
 
   return <div className = "container">
-    <NotestList notes = {notes} handleAddNote = {addNote} handleDeleteNote = {deleteNote}/>
+    <Header/>
+    <Search handleSearchNote={setSearchText}/>
+    <NotestList notes = {notes.filter((note) => note.text.toLowerCase().includes(searchText))} handleAddNote = {addNote} handleDeleteNote = {deleteNote}/>
   </div>;
 };
 
